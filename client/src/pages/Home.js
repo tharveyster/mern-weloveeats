@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import Random from "../components/Random";
 
 const Home = () => {
   const [totalRecipes, setTotalRecipes] = useState();
@@ -85,6 +86,7 @@ const Home = () => {
           {recentResults()}
         </div>
       </div>
+      <Random />
     </>
   );
 };

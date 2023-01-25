@@ -25,4 +25,16 @@ router.get('/recent', async (req, res) => {
   res.send(recentRecipes);
 });
 
+router.get('/random', async (req, res) => {
+  const randomData = await Recipe.findAll({
+    order: Sequelize.literal('rand()'), limit: 5,
+    where: {
+      is_new: 0
+    },
+    attributes: ['id', 'title', 'recipepic'],
+  });
+  const randomRecipes = randomData.map((randomRecipe) => randomRecipe.get({ plain: true }));
+  res.send(randomRecipes);
+})
+
 module.exports = router;
