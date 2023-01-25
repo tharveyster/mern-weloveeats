@@ -4,6 +4,7 @@ import Random from "../components/Random";
 import Popular from "../components/Popular";
 import Liked from "../components/Liked";
 import Contact from "../components/Contact";
+import Policies from "../components/Policies";
 
 const Home = () => {
   const [totalRecipes, setTotalRecipes] = useState();
@@ -92,6 +93,7 @@ const Home = () => {
       <Popular />
       <Liked />
       <Contact />
+      <Policies />
     </>
   );
 };
