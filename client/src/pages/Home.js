@@ -3,6 +3,7 @@ import Axios from "axios";
 
 const Home = () => {
   const [totalRecipes, setTotalRecipes] = useState();
+  const [recentRecipes, setRecentRecipes] = useState();
 
   const getTotalRecipes = async () => {
     await Axios.get("http://localhost:3001/count")
@@ -13,10 +14,55 @@ const Home = () => {
         console.log(error);
       });
   };
-
   useEffect(() => {
     getTotalRecipes();
   }, []);
+
+  const getRecentRecipes = async () => {
+    await Axios.get("http://localhost:3001/recent")
+      .then((response) => {
+        setRecentRecipes(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    getRecentRecipes();
+  }, []);
+
+  const recentResults = () => {
+    if (!recentRecipes || recentRecipes.length === 0) {
+      return (
+      <div>
+        <br />
+        <p>There are no new recipes.</p>
+        <br />
+      </div>
+      )
+    } else {
+      return (
+        <div>
+          {recentRecipes.map((recipe) => {
+            return (
+              <div key={recipe.id} className="recipeBlockCell">
+                <a className="result" href={recipe.id}>
+                  <img
+                    className="cat-pic"
+                    src={"/images/" + recipe.recipepic}
+                    alt=""
+                  />
+                  <br />
+                  <div className="titleText">{recipe.title}</div>
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+  };
 
   return (
     <>
@@ -34,6 +80,10 @@ const Home = () => {
           <p className="recCount">Current recipe count: {totalRecipes}</p>
         </div>
         <br style={{ clear: "both" }} />
+        <div className="recipeBlock">
+          <h2 className="recipeBlockTitle">Added in the Last 90 Days</h2>
+          {recentResults()}
+        </div>
       </div>
     </>
   );
