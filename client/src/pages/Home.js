@@ -3,6 +3,7 @@ import Axios from "axios";
 import Random from "../components/Random";
 import Popular from "../components/Popular";
 import Liked from "../components/Liked";
+import Contact from "../components/Contact";
 
 const Home = () => {
   const [totalRecipes, setTotalRecipes] = useState();
@@ -90,6 +91,7 @@ const Home = () => {
       <Random />
       <Popular />
       <Liked />
+      <Contact />
     </>
   );
 };
