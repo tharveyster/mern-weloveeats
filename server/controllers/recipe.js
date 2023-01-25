@@ -37,4 +37,17 @@ router.get('/random', async (req, res) => {
   res.send(randomRecipes);
 })
 
+router.get('/popular', async (req, res) => {
+  const popularData = await Recipe.findAll({
+    order: [['clicks', 'DESC']],
+    limit: 5,
+    where: {
+      is_new: 0
+    },
+    attributes: ['id', 'title', 'recipepic'],
+  });
+  const popularRecipes = popularData.map((popularRecipe) => popularRecipe.get({ plain: true }));
+  res.send(popularRecipes);
+})
+
 module.exports = router;

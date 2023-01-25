@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Random from "../components/Random";
+import Popular from "../components/Popular";
 
 const Home = () => {
   const [totalRecipes, setTotalRecipes] = useState();
@@ -23,7 +24,6 @@ const Home = () => {
     await Axios.get("http://localhost:3001/recent")
       .then((response) => {
         setRecentRecipes(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -87,6 +87,7 @@ const Home = () => {
         </div>
       </div>
       <Random />
+      <Popular />
     </>
   );
 };
