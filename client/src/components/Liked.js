@@ -20,7 +20,7 @@ const Liked = () => {
   return (
     <div className="recipeBlock">
       <h2 className="recipeBlockTitle">Most Liked Recipes</h2>
-      {likedRecipes.map(({recipe:recipe}) => {
+      {likedRecipes.map(({recipe}) => {
         return (
           <div key={recipe.id} className="recipeBlockCell">
             <a className="result" href={"/Recipe/" + recipe.id}>
