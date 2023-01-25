@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Random from "../components/Random";
 import Popular from "../components/Popular";
+import Liked from "../components/Liked";
 
 const Home = () => {
   const [totalRecipes, setTotalRecipes] = useState();
@@ -88,6 +89,7 @@ const Home = () => {
       </div>
       <Random />
       <Popular />
+      <Liked />
     </>
   );
 };
