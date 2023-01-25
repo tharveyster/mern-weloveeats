@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Recipe = require('../models/Recipe');
 
-router.get('/', async (req, res) => {
+router.get('/count', async (req, res) => {
   const recipeCount = await Recipe.count({
     where: {
       is_new: 0

@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 const session = require('express-session');
 const controllers = require('./controllers');
 const sequelize = require('./config/connection');
@@ -16,6 +17,7 @@ const sess = {
   })
 };
 
+app.use(cors());
 app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
