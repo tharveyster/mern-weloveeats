@@ -98,10 +98,6 @@ router.get("/category/:id", async (req, res) => {
     res.status(404);
     return;
   }
-  const category_name = categoryData.short_title;
-  const title = categoryData.title;
-  const recipesArray = categoryData.recipes;
-  const categoryRecipes = recipesArray.map((categoryRecipe) => categoryRecipe.get({ plain: true }));
   res.send(categoryData);
 });
 
