@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Sequelize } = require("sequelize");
+const { Sequelize, QueryTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const { Recipe, UpVote, Category } = require("../models");
 const Op = Sequelize.Op;
@@ -120,5 +120,14 @@ router.get("/recipe/:id", async (req, res) => {
   }
   res.send(recipeData);
 });
+
+router.get("/ingredients/:id", async (req, res) => {
+  const recipeId = req.params.id;
+  const ingredients = await sequelize.query(
+    'SELECT b.amount, b.frac_amount, b.modification, d.unit_id, d.unit_label, d.unit_plural, d.unit_mod, c.label, c.singular, c.plural, b.instructions FROM recipe AS a JOIN recipe_ingredient AS b ON a.id = b.id JOIN ingredient AS c ON b.ingredient_id = c.ingredient_id JOIN unit as d ON b.unit_id = d.unit_id WHERE a.id = ' + recipeId + ' ORDER BY b.recipe_ingredient_id', {
+    type: QueryTypes.SELECT
+  })
+  res.send(ingredients);
+})
 
 module.exports = router;

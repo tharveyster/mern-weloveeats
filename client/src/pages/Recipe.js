@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import Ingredients from "../components/Ingredients";
 import Random from "../components/Random";
 import Popular from "../components/Popular";
 import Liked from "../components/Liked";
@@ -43,8 +44,7 @@ const Recipe = () => {
           <h2>{recipe.origin}</h2>
           <h3 id="numServ">{recipe.servings} Servings</h3>
           <br />
-          <ul className="inglist">
-          </ul>
+          <Ingredients />
           <br />
           <div className="likeSection">
           </div>
