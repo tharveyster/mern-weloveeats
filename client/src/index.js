@@ -19,7 +19,7 @@ export default function App() {
           <ScrollToTop />
           <Routes>
             <Route index element={<Home />} />
-            <Route path="category/1" element={<Category />} />
+            <Route path="category/:id" element={<Category />} />
           </Routes>
         </BrowserRouter>
       </div>
