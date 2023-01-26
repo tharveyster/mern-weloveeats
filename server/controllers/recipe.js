@@ -105,5 +105,20 @@ router.get("/category/:id", async (req, res) => {
   res.send(categoryData);
 });
 
+router.get('/recipe/:id', async (req, res) => {
+  const recipeData = await Recipe.findByPk(req.params.id, {
+    include: [
+      {
+        model: Category,
+        attributes: ['title', 'short_title'],
+      },
+    ],
+  });
+  if (!recipeData) {
+    res.status(404);
+    return;
+  }
+  res.send(recipeData);
+});
 
 module.exports = router;
