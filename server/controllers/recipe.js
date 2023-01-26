@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Sequelize } = require("sequelize");
-const sequelize = require('../config/connection');
+const sequelize = require("../config/connection");
 const { Recipe, UpVote, Category } = require("../models");
 const Op = Sequelize.Op;
 
@@ -63,34 +63,38 @@ router.get("/popular", async (req, res) => {
 router.get("/liked", async (req, res) => {
   const mostLikedData = await UpVote.findAll({
     attributes: [
-      [sequelize.fn('COUNT', sequelize.col('recipe_id')), 'magnitude']
+      [sequelize.fn("COUNT", sequelize.col("recipe_id")), "magnitude"],
     ],
-    group: 'recipe_id',
-    order: [['magnitude', 'DESC']],
+    group: "recipe_id",
+    order: [["magnitude", "DESC"]],
     limit: 5,
-    include: [{
-      model: Recipe,
-      where: {
-        is_new: 0,
+    include: [
+      {
+        model: Recipe,
+        where: {
+          is_new: 0,
+        },
+        attributes: ["id", "title", "recipepic"],
       },
-      attributes: ['id', 'title', 'recipepic'],
-    }]
-  })
-  const mostLikedRecipes = mostLikedData.map((mostLikedRecipe) => mostLikedRecipe.get({ plain: true }));
+    ],
+  });
+  const mostLikedRecipes = mostLikedData.map((mostLikedRecipe) =>
+    mostLikedRecipe.get({ plain: true })
+  );
   res.send(mostLikedRecipes);
 });
 
 router.get("/category/:id", async (req, res) => {
   const categoryData = await Category.findByPk(req.params.id, {
-    attributes: ['title', 'short_title'],
+    attributes: ["title", "short_title"],
     include: [
       {
         model: Recipe,
-        attributes: ['id', 'title', 'recipepic'],
+        attributes: ["id", "title", "recipepic"],
         where: {
           category_id: req.params.id,
         },
-        order: [['title', 'ASC']],
+        order: [["title", "ASC"]],
       },
     ],
   });
@@ -101,12 +105,12 @@ router.get("/category/:id", async (req, res) => {
   res.send(categoryData);
 });
 
-router.get('/recipe/:id', async (req, res) => {
+router.get("/recipe/:id", async (req, res) => {
   const recipeData = await Recipe.findByPk(req.params.id, {
     include: [
       {
         model: Category,
-        attributes: ['title', 'short_title'],
+        attributes: ["title", "short_title"],
       },
     ],
   });

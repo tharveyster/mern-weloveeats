@@ -8,6 +8,7 @@ import Policies from "../components/Policies";
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState([]);
+  const [category, setCategory] = useState([]);
   const recipeId = window.location.pathname.split("/")[2];
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const Recipe = () => {
       await Axios.get("http://localhost:3001/recipe/" + recipeId)
         .then((response) => {
           setRecipe(response.data);
+          setCategory(response.data.category.title)
         })
         .catch((error) => {
           console.log(error);
@@ -23,13 +25,11 @@ const Recipe = () => {
     getRecipe();
   }, [recipeId]);
 
-  console.log(recipe);
-
   return (
     <>
       <div className="rec-header">
         <div className="rec-header-title">
-          <p className="rec-header-text">{recipe.category.title}</p>
+          <p className="rec-header-text">{category}</p>
         </div>
       </div>
       <br style={{ clear: "both" }} />
@@ -64,3 +64,38 @@ const Recipe = () => {
 };
 
 export default Recipe;
+
+/*
+      <div className="rec-header">
+        <div className="rec-header-title">
+          <p className="rec-header-text">{recipe.category.title}</p>
+        </div>
+      </div>
+      <br style={{ clear: "both" }} />
+      <div id="content" className="rec-content">
+        <article id="recipeMainContent">
+          <div id="wwspCircle">
+          </div>
+          <div className="social">
+          </div>
+          <h1>{recipe.title}</h1>
+          <h2>{recipe.origin}</h2>
+          <h3 id="numServ">{recipe.servings} Servings</h3>
+          <br />
+          <ul className="inglist">
+          </ul>
+          <br />
+          <div className="likeSection">
+          </div>
+        </article>
+        <aside id="recipePictures" className="recPics">
+        </aside>
+        <aside id="recipeNutrition">
+        </aside>
+      </div>
+      <Random />
+      <Popular />
+      <Liked />
+      <Contact />
+      <Policies />
+ */
