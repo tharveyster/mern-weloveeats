@@ -16,6 +16,12 @@ const Navigation = () => {
                   <span>Home</span>
                 </Link>
               </li>
+              <li className="navigationItem">
+                <Link to="/Category/1">
+                  <img src="/images/icons/sm-appetizers.jpg" alt="Appetizers" />
+                  <span>Appetizers</span>
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>

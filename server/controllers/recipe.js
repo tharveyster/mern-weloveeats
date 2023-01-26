@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Sequelize } = require("sequelize");
 const sequelize = require('../config/connection');
-const { Recipe, UpVote } = require("../models");
+const { Recipe, UpVote, Category } = require("../models");
 const Op = Sequelize.Op;
 
 router.get("/count", async (req, res) => {
@@ -79,5 +79,31 @@ router.get("/liked", async (req, res) => {
   const mostLikedRecipes = mostLikedData.map((mostLikedRecipe) => mostLikedRecipe.get({ plain: true }));
   res.send(mostLikedRecipes);
 });
+
+router.get("/category/:id", async (req, res) => {
+  const categoryData = await Category.findByPk(req.params.id, {
+    attributes: ['title', 'short_title'],
+    include: [
+      {
+        model: Recipe,
+        attributes: ['id', 'title', 'recipepic'],
+        where: {
+          category_id: req.params.id,
+        },
+        order: [['title', 'ASC']],
+      },
+    ],
+  });
+  if (!categoryData) {
+    res.status(404);
+    return;
+  }
+  const category_name = categoryData.short_title;
+  const title = categoryData.title;
+  const recipesArray = categoryData.recipes;
+  const categoryRecipes = recipesArray.map((categoryRecipe) => categoryRecipe.get({ plain: true }));
+  res.send(categoryData);
+});
+
 
 module.exports = router;
