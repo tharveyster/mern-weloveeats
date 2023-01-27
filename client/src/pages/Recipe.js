@@ -48,6 +48,15 @@ const Recipe = () => {
           <Ingredients />
           <br />
           <Directions />
+          {recipe.notes ? <br /> : null}
+          {recipe.notes ? (
+            <p key={recipe.notes} className="flush">
+              <b>Note: </b>
+              {recipe.notes}
+            </p>
+          ) : (
+            ""
+          )}
           <div className="likeSection">
           </div>
         </article>
