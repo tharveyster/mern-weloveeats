@@ -9,7 +9,7 @@ The home page is complete, and shows everything the original page does except fo
 
 The category page is also complete except for ads.
 
-The recipe page currently shows the category, title, origin (if known), number of servings, full ingredient list, directions, picture(s), nutrition information, and Weight Watchers points.
+The recipe page currently shows the category, title, origin (if known), number of servings, full ingredient list, directions, picture(s), nutrition information, Weight Watchers points, and a view counter (increments on each visit).
 
 The navigation menu has the home page and all of the recipe categories.
 
@@ -18,7 +18,6 @@ There's components that show 5 random recipes, 5 most viewed recipes, and 5 most
 ## To Do
 - User account creation (sign up).
 - Log in / log out.
-- View counter on recipes (updates on each visit).
 - Like / dislike recipes.
 - Comment on recipes.
 - Reply to comments.
