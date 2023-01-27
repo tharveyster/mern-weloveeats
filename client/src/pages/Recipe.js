@@ -7,6 +7,7 @@ import Liked from "../components/Liked";
 import Contact from "../components/Contact";
 import Policies from "../components/Policies";
 import Directions from "../components/Directions";
+import Nutrition from "../components/Nutrition";
 import Modal from "react-bootstrap/Modal";
 
 const Recipe = () => {
@@ -111,7 +112,9 @@ const Recipe = () => {
             </Modal.Body>
           </Modal>
         </aside>
-        <aside id="recipeNutrition"></aside>
+        <aside id="recipeNutrition">
+          <Nutrition />
+        </aside>
       </div>
       <Random />
       <Popular />
