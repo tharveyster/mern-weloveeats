@@ -18,8 +18,6 @@ const Directions = () => {
     getDirections();
   }, [recipeId]);
 
-  console.log(directions);
-
   return (
     <>
       {directions.map((direction) => {

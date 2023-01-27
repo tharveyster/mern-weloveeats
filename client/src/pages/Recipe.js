@@ -7,18 +7,26 @@ import Liked from "../components/Liked";
 import Contact from "../components/Contact";
 import Policies from "../components/Policies";
 import Directions from "../components/Directions";
+import Modal from "react-bootstrap/Modal";
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState([]);
   const [category, setCategory] = useState([]);
+  const [showPic1, setShowPic1] = useState(false);
+  const [showPic2, setShowPic2] = useState(false);
   const recipeId = window.location.pathname.split("/")[2];
+
+  const handleClosePic1 = () => setShowPic1(false);
+  const handleShowPic1 = () => setShowPic1(true);
+  const handleClosePic2 = () => setShowPic2(false);
+  const handleShowPic2 = () => setShowPic2(true);
 
   useEffect(() => {
     const getRecipe = async () => {
       await Axios.get("http://localhost:3001/recipe/" + recipeId)
         .then((response) => {
           setRecipe(response.data);
-          setCategory(response.data.category.title)
+          setCategory(response.data.category.title);
         })
         .catch((error) => {
           console.log(error);
@@ -37,10 +45,8 @@ const Recipe = () => {
       <br style={{ clear: "both" }} />
       <div id="content" className="rec-content">
         <article id="recipeMainContent">
-          <div id="wwspCircle">
-          </div>
-          <div className="social">
-          </div>
+          <div id="wwspCircle"></div>
+          <div className="social"></div>
           <h1>{recipe.title}</h1>
           <h2>{recipe.origin}</h2>
           <h3 id="numServ">{recipe.servings} Servings</h3>
@@ -57,13 +63,55 @@ const Recipe = () => {
           ) : (
             ""
           )}
-          <div className="likeSection">
-          </div>
+          <div className="likeSection"></div>
         </article>
         <aside id="recipePictures" className="recPics">
+          <div>
+            <img
+              id="pics"
+              src={"/images/" + recipe.recipepic}
+              alt={recipe.keywords}
+              title={recipe.title}
+              onClick={handleShowPic1}
+            />
+          </div>
+          <Modal show={showPic1} onHide={handleClosePic1}>
+            <Modal.Header closeButton></Modal.Header>
+            <Modal.Body>
+              <div>
+                <img
+                  id="pics"
+                  src={"/images/" + recipe.recipepic}
+                  alt={recipe.keywords}
+                  title={recipe.title}
+                />
+              </div>
+            </Modal.Body>
+          </Modal>
+          <div style={{ display: recipe.is_there_two }}>
+            <img
+              id="pics-2nd"
+              src={"/images/" + recipe.recipe2ndpic}
+              alt={recipe.keywords}
+              title={recipe.title}
+              onClick={handleShowPic2}
+            />
+          </div>
+          <Modal show={showPic2} onHide={handleClosePic2}>
+            <Modal.Header closeButton></Modal.Header>
+            <Modal.Body>
+              <div>
+                <img
+                  id="pics-2nd"
+                  src={"/images/" + recipe.recipe2ndpic}
+                  alt={recipe.keywords}
+                  title={recipe.title}
+                />
+              </div>
+            </Modal.Body>
+          </Modal>
         </aside>
-        <aside id="recipeNutrition">
-        </aside>
+        <aside id="recipeNutrition"></aside>
       </div>
       <Random />
       <Popular />
@@ -75,38 +123,3 @@ const Recipe = () => {
 };
 
 export default Recipe;
-
-/*
-      <div className="rec-header">
-        <div className="rec-header-title">
-          <p className="rec-header-text">{recipe.category.title}</p>
-        </div>
-      </div>
-      <br style={{ clear: "both" }} />
-      <div id="content" className="rec-content">
-        <article id="recipeMainContent">
-          <div id="wwspCircle">
-          </div>
-          <div className="social">
-          </div>
-          <h1>{recipe.title}</h1>
-          <h2>{recipe.origin}</h2>
-          <h3 id="numServ">{recipe.servings} Servings</h3>
-          <br />
-          <ul className="inglist">
-          </ul>
-          <br />
-          <div className="likeSection">
-          </div>
-        </article>
-        <aside id="recipePictures" className="recPics">
-        </aside>
-        <aside id="recipeNutrition">
-        </aside>
-      </div>
-      <Random />
-      <Popular />
-      <Liked />
-      <Contact />
-      <Policies />
- */
