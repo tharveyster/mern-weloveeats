@@ -13,6 +13,8 @@ The recipe page currently shows the category, title, origin (if known), number o
 
 The navigation menu has the home page and all of the recipe categories.
 
+There's components that show 5 random recipes, 5 most viewed recipes, and 5 most liked recipes, that appear on most of the pages.
+
 ## To Do
 - User account creation (sign up).
 - Log in / log out.
