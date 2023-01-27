@@ -37,6 +37,27 @@ const Recipe = () => {
     getRecipe();
   }, [recipeId]);
 
+  let twitterUrl =
+    "https://twitter.com/intent/tweet?text=" +
+    recipe.title +
+    "&url=https://www.weloveeats.com/recipe?id=" +
+    recipeId +
+    "&original_referer=https://www.weloveeats.com/recipe?id=" +
+    recipeId;
+  twitterUrl = twitterUrl.replace(/&/g, "%26");
+  twitterUrl = twitterUrl.replace(/ /g, "+");
+
+  let pinterestUrl =
+    "http://pinterest.com/pin/create/button/?url=https://www.weloveeats.com/recipe?id=" +
+    recipeId +
+    "&media=https://www.weloveeats.com/images/" +
+    recipe.recipepic +
+    "&description=WeLoveEats.com - " +
+    category +
+    " - " +
+    recipe.title;
+  pinterestUrl = pinterestUrl.replace(/ /g, "%20");
+
   return (
     <>
       <div className="rec-header">
@@ -48,7 +69,45 @@ const Recipe = () => {
       <div id="content" className="rec-content">
         <article id="recipeMainContent">
           <Wwsp />
-          <div className="social"></div>
+          <div className="social">
+            <a
+              href={
+                "https://www.facebook.com/sharer.php?u=https://www.weloveeats.com/recipe?id=" +
+                recipeId
+              }
+              rel="noreferrer"
+              target="_blank"
+              title="Share on Facebook"
+              data-social-share-network="facebook"
+              className="fa fa-facebook share facebook"
+            > </a>
+            <a
+              href={twitterUrl}
+              rel="noreferrer"
+              target="_blank"
+              title="Share on Twitter"
+              data-social-share-network="twitter"
+              className="fa fa-twitter share twitter"
+            > </a>
+            <a
+              href={pinterestUrl}
+              rel="noreferrer"
+              target="_blank"
+              title="Share on Pinterest"
+              data-social-share-network="pinterest"
+              data-pin-custom="true"
+              className="fa fa-pinterest share pinterest"
+            > </a>
+            <a
+              href="/#"
+              onClick={e => {
+                e.preventDefault()
+                window.print()
+              }}
+              title="Print"
+              className="fa fa-print"
+            > </a>
+          </div>
           <h1>{recipe.title}</h1>
           <h2>{recipe.origin}</h2>
           <h3 id="numServ">{recipe.servings} Servings</h3>
