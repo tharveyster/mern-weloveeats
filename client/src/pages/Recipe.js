@@ -8,6 +8,7 @@ import Contact from "../components/Contact";
 import Policies from "../components/Policies";
 import Directions from "../components/Directions";
 import Nutrition from "../components/Nutrition";
+import Wwsp from "../components/Wwsp";
 import Modal from "react-bootstrap/Modal";
 
 const Recipe = () => {
@@ -46,7 +47,7 @@ const Recipe = () => {
       <br style={{ clear: "both" }} />
       <div id="content" className="rec-content">
         <article id="recipeMainContent">
-          <div id="wwspCircle"></div>
+          <Wwsp />
           <div className="social"></div>
           <h1>{recipe.title}</h1>
           <h2>{recipe.origin}</h2>
