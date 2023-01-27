@@ -80,7 +80,9 @@ const Recipe = () => {
               title="Share on Facebook"
               data-social-share-network="facebook"
               className="fa fa-facebook share facebook"
-            > </a>
+            >
+              {" "}
+            </a>
             <a
               href={twitterUrl}
               rel="noreferrer"
@@ -88,7 +90,9 @@ const Recipe = () => {
               title="Share on Twitter"
               data-social-share-network="twitter"
               className="fa fa-twitter share twitter"
-            > </a>
+            >
+              {" "}
+            </a>
             <a
               href={pinterestUrl}
               rel="noreferrer"
@@ -97,16 +101,20 @@ const Recipe = () => {
               data-social-share-network="pinterest"
               data-pin-custom="true"
               className="fa fa-pinterest share pinterest"
-            > </a>
+            >
+              {" "}
+            </a>
             <a
               href="/#"
-              onClick={e => {
-                e.preventDefault()
-                window.print()
+              onClick={(e) => {
+                e.preventDefault();
+                window.print();
               }}
               title="Print"
               className="fa fa-print"
-            > </a>
+            >
+              {" "}
+            </a>
           </div>
           <h1>{recipe.title}</h1>
           <h2>{recipe.origin}</h2>
@@ -124,7 +132,9 @@ const Recipe = () => {
           ) : (
             ""
           )}
-          <div className="likeSection"></div>
+          <div className="likeSection">
+            <div className="bottomSection">{recipe.clicks} Views</div>
+          </div>
         </article>
         <aside id="recipePictures" className="recPics">
           <div>

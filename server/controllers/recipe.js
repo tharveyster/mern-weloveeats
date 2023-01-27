@@ -119,6 +119,14 @@ router.get("/recipe/:id", async (req, res) => {
     return;
   }
   res.send(recipeData);
+
+  const recipe = recipeData.get({ plain: true });
+  const recipeId = recipe.id;
+
+  Recipe.update(
+    { clicks: recipe.clicks + 1 },
+    { where: { id: recipeId } }
+  )
 });
 
 router.get("/ingredients/:id", async (req, res) => {
