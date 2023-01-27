@@ -128,6 +128,15 @@ router.get("/ingredients/:id", async (req, res) => {
     type: QueryTypes.SELECT
   })
   res.send(ingredients);
+});
+
+router.get("/directions/:id", async (req, res) => {
+  const recipeId = req.params.id;
+  const directions = await sequelize.query(
+    'SELECT b.direction FROM recipe AS a JOIN recipe_direction AS b ON a.id = b.id WHERE a.id = ' + recipeId + ' ORDER BY b.recipe_direction_id', {
+    type: QueryTypes.SELECT
+  })
+  res.send(directions);
 })
 
 module.exports = router;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 const Ingredients = () => {
@@ -17,8 +17,6 @@ const Ingredients = () => {
     };
     getIngredients();
   }, [recipeId]);
-
-  console.log(ingredients);
 
   return (
     <>

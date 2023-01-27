@@ -6,6 +6,7 @@ import Popular from "../components/Popular";
 import Liked from "../components/Liked";
 import Contact from "../components/Contact";
 import Policies from "../components/Policies";
+import Directions from "../components/Directions";
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState([]);
@@ -46,6 +47,7 @@ const Recipe = () => {
           <br />
           <Ingredients />
           <br />
+          <Directions />
           <div className="likeSection">
           </div>
         </article>
