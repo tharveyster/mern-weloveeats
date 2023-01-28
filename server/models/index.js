@@ -1,6 +1,7 @@
 const Recipe = require('./Recipe');
 const UpVote = require('./UpVotes');
 const Category = require("./Category");
+const User = require("./User");
 
 Recipe.hasMany(UpVote, {
   foreignKey: 'recipe_id',
@@ -22,4 +23,4 @@ Recipe.belongsTo(Category, {
   onDelete: 'CASCADE'
 })
 
-module.exports = { Recipe, UpVote, Category };
+module.exports = { Recipe, UpVote, Category, User };

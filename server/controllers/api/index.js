@@ -1,9 +1,7 @@
 const router = require('express').Router();
-const recipe = require('./recipe');
-const api = require('./api');
+const user = require("./user");
 
-router.use('/', recipe);
-router.use('/api', api);
+router.use('/user', user);
 
 router.use((req, res) => {
   res.status(404).end();

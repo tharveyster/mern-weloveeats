@@ -713,6 +713,10 @@ footer {
   user-select:none;
 }
 
+.btn-link {
+  background: none;
+}
+
 .btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus {
   outline:5px auto;
   outline-offset:-2px;
@@ -1301,6 +1305,20 @@ a.abtButton:hover {
 	font-size: 14px;
 	font-weight: 400;
 	color: #212529;
+}
+
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 }
 
 .errorMessage {

@@ -112,6 +112,12 @@ const Navigation = () => {
                   <span>Beverages</span>
                 </Link>
               </li>
+              <li className="navigationItem">
+                <Link to="/SignUp">
+                  <img src="/images/icons/signUp.png" alt="Sign Up" />
+                  <span>Sign Up</span>
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>

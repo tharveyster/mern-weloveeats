@@ -7,6 +7,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Category from "./pages/Category";
 import Recipe from "./pages/Recipe";
+import SignUp from "./pages/SignUp";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="category/:id" element={<Category />} />
             <Route path="recipe/:id" element={<Recipe />} />
+            <Route path="signUp" element={<SignUp />} />
           </Routes>
         </BrowserRouter>
       </div>
