@@ -11,7 +11,7 @@ const Contact = () => {
           title="Share on Facebook"
           data-social-share-network="facebook"
           className="fa fa-facebook share facebook"
-        ></a>
+        > </a>
         <a
           href="https://twitter.com/intent/tweet?text=WeLoveEats.com&amp;url=https%3a%2f%2fwww.weloveeats.com&amp;original_referer=https%3a%2f%2fwww.weloveeats.com"
           rel="noreferrer"
@@ -19,7 +19,7 @@ const Contact = () => {
           title="Share on Twitter"
           data-social-share-network="twitter"
           className="fa fa-twitter share twitter"
-        ></a>
+        > </a>
         <a
           href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fwww.weloveeats.com&media=https%3a%2f%2fwww.weloveeats.com/images/placesetting.png&description=WeLoveEats.com"
           rel="noreferrer"
@@ -28,7 +28,7 @@ const Contact = () => {
           data-social-share-network="pinterest"
           data-pin-custom="true"
           className="fa fa-pinterest share pinterest"
-        ></a>
+        > </a>
       </div>
       <div className="fillerContent"></div>
       <div className="contactContent">
@@ -41,7 +41,7 @@ const Contact = () => {
           title="Contact us on Facebook"
           data-social-share-network="contact"
           className="fa fa-facebook share facebook"
-        ></a>
+        > </a>
       </div>
     </div>
   );
